@@ -1,0 +1,14 @@
+.nav-tabs {
+    padding-left: 3px;
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: blue;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.nav-tabs .nav-link {
+    color: black;
+}
