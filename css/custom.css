@@ -12,3 +12,13 @@
 .nav-tabs .nav-link {
     color: black;
 }
+
+hr {
+    border-color: rebeccapurple;
+}
+
+@media (max-width: 767.98px) {
+    .coordinate {
+        width: 55px;
+    }
+}

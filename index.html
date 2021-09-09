@@ -14,60 +14,225 @@
     <!-- C = R: E S T P F – Y S T -->
     <!-- I = 1: 21 26 13 19 11- 20 19 - 6 25 7 7 1 -->
     <div class="conten m-3">
-        <div class="form-row">
-            <div class="col"></div>
-            <div class="col ml-5">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active js-choose-type" id="char_char-tab" data-req='3' data-toggle="tab" href="#char_char" role="tab" aria-controls="char_char" aria-selected="true">Chữ - Chữ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-choose-type" id="char_numb-tab" data-req='4' data-toggle="tab" href="#char_numb" role="tab" aria-controls="char_numb" aria-selected="false">Chữ - Số</a>
-                    </li>
-                </ul>
+        <div class="solve-replace">
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col ml-5">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active js-choose-type" id="char_char-tab" data-req='3' data-toggle="tab" href="#char_char" role="tab" aria-controls="char_char" aria-selected="true">Chữ - Chữ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-choose-type" id="char_numb-tab" data-req='4' data-toggle="tab" href="#char_numb" role="tab" aria-controls="char_numb" aria-selected="false">Chữ - Số</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <label for="keys" class="font-weight-bold pt-2">Khoá</label>
-            <div class="col">
-                <input type="text" class="form-control" id="key">
-            </div>
-            <div class="equal-character ml-1 pt-1">
-                <span>=</span>
-            </div>
-            <div class="col ml-1">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="char_char" role="tabpanel" aria-labelledby="char_char-tab">
-                        <input value="" type="text" class="form-control" maxlength="1" id="keyCompareChar">
+            <div class="form-row">
+                <label for="keys" class="font-weight-bold pt-2">Khoá</label>
+                <div class="col">
+                    <input type="text" class="form-control" id="key">
+                </div>
+                <div class="equal-character ml-1 pt-1">
+                    <span>=</span>
+                </div>
+                <div class="col ml-1">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="char_char" role="tabpanel" aria-labelledby="char_char-tab">
+                            <input value="" type="text" class="form-control" maxlength="1" id="keyCompareChar">
+                        </div>
+                        <div class="tab-pane fade" id="char_numb" role="tabpanel" aria-labelledby="char_numb-tab">
+                            <input value="" type="number" class="form-control" id="keyCompareNumb">
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="char_numb" role="tabpanel" aria-labelledby="char_numb-tab">
-                        <input value="" type="number" class="form-control" id="keyCompareNumb">
-                    </div>
+                </div>
+            </div>
+    
+            <div class="form-row mt-3">
+                <label for="secretString" class="font-weight-bold">Văn bản</label>
+                <input type="text" class="form-control" id="secretString" placeholder="Vui lòng nhập văn bản ....">
+            </div>
+    
+            <div class="row mt-5 text-center">
+                <div class="col">
+                    <button type="button" class="btn btn-success" data-req='1' data-typesolve='1' id="submit">Giải Mã</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" data-req='2' data-typesolve='1' id="encoding">Mã Hoá</button>
+                </div>
+            </div>
+
+            <div class="results">
+                <div class="form-group mt-5">
+                    <label for="stringDecoding">Đoạn Giải Mã</label>
+                    <input type="text" class="form-control" id="stringDecoding" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="stringEncoding">Đoạn Mã Hoá</label>
+                    <input type="text" class="form-control" id="stringEncoding" disabled>
                 </div>
             </div>
         </div>
 
-        <div class="form-row mt-3">
-            <label for="secretString" class="font-weight-bold">Bạch Văn</label>
-            <input type="text" class="form-control" id="secretString" placeholder="Fill in the secret text">
-        </div>
+        <hr>
 
-        <div class="row mt-5 text-center">
-            <div class="col">
-                <button type="button" class="btn btn-success" data-req='1' id="submit">Giải Mã</button>
+        <div class="solve-coordinate" aria-describedby="solve-coordinate">
+            <label for="solve-coordinate" class="font-weight-bold ml-3">
+                <i><u>Toạ Độ 5x5</u></i>
+            </label>
+            <div class="container mt-4 mb-3">
+                <label for="secretStringLabel" class="font-weight-bold" id="secretStringLabel">Văn Bản</label>
+                <textarea class="form-control" id="secretStringCoordinate" rows="2" aria-describedby="secretStringDemo" placeholder="Vui lòng nhập văn bản theo mẫu ...."></textarea>
+                <small id="secretStringDemo" class="form-text text-muted">
+                    <i>
+                        Văn bản cần mã hoá: OWN CHUAS DDUR CHO NGUOWI<br>
+                        Văn bản cần giải mã: E3,C5,D3 - C1,C2,A5,A1,D4 - D1,D1,A5,C4 - C1,C2,E3 - D3,B2,A5,E3,C5,D2
+                    </i>
+                </small>
             </div>
-            <div class="col">
-                <button type="button" class="btn btn-danger" data-req='2' id="encoding">Mã Hoá</button>
-            </div>
-        </div>
-        <div class="form-group mt-5">
-            <label for="stringDecoding">Đoạn Giải Mã</label>
-            <input type="text" class="form-control" id="stringDecoding" disabled>
-        </div>
 
-        <div class="form-group">
-            <label for="stringEncoding">Đoạn Mã Hoá</label>
-            <input type="text" class="form-control" id="stringEncoding" disabled>
+            <div class="container table-coordinate text-center">
+                <div class="row line-y-0 mb-2">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase" value="#" disabled>
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-0" class="coordinate d-block text-center bg-secondary rounded border-0 text-uppercase">
+                    </div>
+                </div>
+                <div class="row line-y-1 mb-2">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-1" class="coordinate d-block text-center rounded border-0 bg-secondary text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-1" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-1" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-1" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-1" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-1" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                </div>
+                <div class="row line-y-2 mb-2">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-2" class="coordinate d-block text-center rounded border-0 bg-secondary text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-2" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-2" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-2" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-2" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-2" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                </div>
+                <div class="row line-y-3 mb-2">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-3" class="coordinate d-block text-center rounded border-0 bg-secondary text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-3" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-3" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-3" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-3" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-3" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                </div>
+                <div class="row line-y-4 mb-2">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-4" class="coordinate d-block text-center rounded border-0 bg-secondary text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-4" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-4" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-4" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-4" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-4" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                </div>
+                <div class="row line-y-5">
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_0-5" class="coordinate d-block text-center rounded border-0 bg-secondary text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_1-5" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_2-5" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_3-5" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_4-5" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <input type="text" name="coordinate_5-5" class="coordinate d-block text-center rounded border-bottom border-top-0 border-left-0 border-right-0 text-uppercase">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 text-center">
+                <div class="col">
+                    <button type="button" class="btn btn-success" data-req='1' data-typesolve='2' id="submitCoordinate">Giải Mã</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" data-req='2' data-typesolve='2' id="encodingCoordinate">Mã Hoá</button>
+                </div>
+            </div>
+
+            <div class="results">
+                <div class="form-group mt-5">
+                    <label for="stringDecoding">Đoạn Giải Mã</label>
+                    <input type="text" class="form-control" id="stringDecodingCoordinate" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="stringEncoding">Đoạn Mã Hoá</label>
+                    <input type="text" class="form-control" id="stringEncodingCoordinate" disabled>
+                </div>
+            </div>
         </div>
     </div>
 
