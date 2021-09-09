@@ -1,3 +1,17 @@
+.conten::before {
+    content:"";
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:-1;
+    opacity: 0.1;
+    display:block;
+    background:url(../image/logo_v1.1.png) no-repeat 50% 50%;
+    background-size:inherit;
+}
+
 .nav-tabs {
     padding-left: 3px;
     border-bottom: none;
