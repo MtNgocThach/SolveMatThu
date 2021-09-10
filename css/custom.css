@@ -9,7 +9,17 @@
     opacity: 0.3;
     display:block;
     background:url(../image/logo_v1.1.png) no-repeat 50% 50%;
-    background-size:70%;
+    background-size:50%;
+}
+
+@media (max-width: 767.98px) {
+    .coordinate {
+        width: 55px;
+    }
+
+    .conten::before {
+        background-size:90%;
+    }
 }
 
 .nav-tabs {
