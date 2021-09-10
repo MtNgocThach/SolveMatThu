@@ -12,6 +12,11 @@
     background-size:50%;
 }
 
+.getting-slogan {
+    color:rebeccapurple;
+    font-family: 'Dancing Script', cursive;
+}
+
 @media (max-width: 767.98px) {
     .coordinate {
         width: 55px;
