@@ -4,7 +4,7 @@ const COORDINATE = {
     MAX_X : 5, MAX_Y: 5,
     DISTINGUISH: {
         WORD: [','],
-        TEXT: ['-', '/',]
+        TEXT: ['-', '/',',']
     }
 };
 
